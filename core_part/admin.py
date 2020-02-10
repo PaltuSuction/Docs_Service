@@ -1,6 +1,6 @@
 from django.contrib import admin
 from core_part.models import Student, Teacher, Group, Department, Faculty, Discipline
-
+from authentication_part.models import User
 # Register your models here.
 
 #admin.site.register(Student)
@@ -14,3 +14,5 @@ admin.site.register(Group)
 admin.site.register(Department)
 admin.site.register(Faculty)
 admin.site.register(Discipline)
+
+admin.site.register(User)

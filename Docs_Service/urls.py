@@ -21,6 +21,6 @@ from Docs_Service import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core_part.urls')),
+    path('', include('authentication_part.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

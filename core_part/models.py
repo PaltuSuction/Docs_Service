@@ -4,9 +4,9 @@ from django.db import models
 
 
 class Person(models.Model):
-    firstName = models.CharField(max_length=150, verbose_name='Имя', help_text='Имя')
-    lastName = models.CharField(max_length=150, verbose_name='Фамилия', help_text='Фамилия')
-    middleName = models.CharField(max_length=150, null=True, blank=True, verbose_name='Отчество',
+    lastName = models.CharField(max_length=50, verbose_name='Фамилия', help_text='Фамилия')
+    firstName = models.CharField(max_length=50, verbose_name='Имя', help_text='Имя')
+    middleName = models.CharField(max_length=50, null=True, blank=True, verbose_name='Отчество',
                                   help_text='Отчество (если есть)')
     email = models.EmailField(verbose_name='Email', help_text='Email', null=True, blank=True)
 
@@ -15,7 +15,7 @@ class Person(models.Model):
 
 
 class Student(Person):
-    studentPhoto = models.ImageField(upload_to='media/profiles/student_profile_pics', null=True, blank=True)
+    #studentPhoto = models.ImageField(upload_to='media/profiles/student_profile_pics', null=True, blank=True)
     studentGroup = models.ForeignKey('Group', on_delete=models.CASCADE, verbose_name='Группа')
     ticketNumber = models.CharField(max_length=20)
 
@@ -29,7 +29,7 @@ class Student(Person):
 
 
 class Teacher(Person):
-    teacherPhoto = models.ImageField(upload_to='media/profiles/teacher_profile_pics', null=True, blank=True)
+    #teacherPhoto = models.ImageField(upload_to='media/profiles/teacher_profile_pics', null=True, blank=True)
     teacherPhoneNumber = models.CharField(max_length=20, verbose_name='Номер телефона преподавателя', help_text='Номер телефона предподавателя', null=True, blank=True)
     departments = models.ManyToManyField('Department', verbose_name='Кафедры', help_text='Кафедры')
 
