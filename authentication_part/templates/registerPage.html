@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ad49d621ae.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type = "text/css" href="{% static 'css/loginStyles.css' %}">
 </head>
-<body>
-<form method="post">
-    {% csrf_token %}
-    <ul>
-        {{ form.as_ul }}
-    </ul>
-    <input type="submit" value="Подтвердить">
-</form>
+
+<body class="login-page">
+<main class = 'col-md-4'>
+    <div class="login-block mt-5 center-block">
+        <h1>Регистрация</h1>
+        <form method = 'post' action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                    <input type="text" name = "username" class="form-control" placeholder="Адрес электронной почты">
+                </div>
+            </div>
+
+            <hr class="hr-xs">
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+                    <input type="text" name="last_name" class="form-control" placeholder="Фамилия">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+                    <input type="text" name="first_name" class="form-control" placeholder="Имя">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+                    <input type="text" name="middle_name" class="form-control" placeholder="Отчество">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+                    <input type="text" name="ticket_number" class="form-control" placeholder="Номер студенческого билета">
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit">ВОЙТИ</button>
+        </form>
+    </div>
+
+	<div class="login-links">
+	    <p class="text-center">Нет аккаунта? <a class="txt-brand" href="{% url 'registration' %}"><font color=#29aafe>Зарегистрируйтесь</font></a></p>
+	</div>
+
+</main>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </body>
 </html>

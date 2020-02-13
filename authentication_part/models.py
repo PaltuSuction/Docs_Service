@@ -45,6 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=50, blank=True)
     first_name = models.CharField(_('first name'), max_length=50, blank=True)
     middle_name = models.CharField(_('middlename'), max_length=50, blank=True)
+    ticket_number = models.CharField(_('ticket number'), max_length=10, unique=True)
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
     is_active = models.BooleanField(_('active'), default=True)
     is_staff = models.BooleanField(_('staff'), default=False)
