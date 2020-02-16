@@ -1,9 +1,11 @@
 from django.db import models
 
 # Create your models here.
+from Docs_Service import settings
 
 
 class Person(models.Model):
+    userPerson = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     lastName = models.CharField(max_length=50, verbose_name='Фамилия', help_text='Фамилия')
     firstName = models.CharField(max_length=50, verbose_name='Имя', help_text='Имя')
     middleName = models.CharField(max_length=50, null=True, blank=True, verbose_name='Отчество',
