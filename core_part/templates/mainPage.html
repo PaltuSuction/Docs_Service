@@ -1,0 +1,10 @@
+{% extends 'userpanel_basic_2.html' %}
+
+{% block content %}
+<h1>Тестовая форма - контент главной страницы.</h1>
+    <form action = '{% url "parse_excel" %}' method = 'POST' enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Загрузить...">
+    </form>
+{% endblock %}

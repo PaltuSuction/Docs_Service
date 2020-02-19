@@ -10,6 +10,7 @@ class Person(models.Model):
     firstName = models.CharField(max_length=50, verbose_name='Имя', help_text='Имя')
     middleName = models.CharField(max_length=50, null=True, blank=True, verbose_name='Отчество',
                                   help_text='Отчество (если есть)')
+    #TODO: Это поле можно удалить
     email = models.EmailField(verbose_name='Email', help_text='Email', null=True, blank=True)
 
     class Meta:

@@ -24,11 +24,7 @@ def Login(req):
             if user is not None and user.is_active:
                 auth.login(req, user)
                 return HttpResponseRedirect('/user/{}'.format(user.ticket_number))
-            else:
-               #form._errors['Authorization_Error'] = 'Неверный логин или пароль'
-                return render(req, 'loginPage.html', context={'form': form})
-        else:
-            return render(req, 'loginPage.html', context={'form': form})
+        return render(req, 'loginPage.html', context={'form': form})
     else:
         form = UserLoginForm()
         return render(req, 'loginPage.html', context={'form': form})
