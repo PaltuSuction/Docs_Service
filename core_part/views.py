@@ -21,6 +21,6 @@ def upload_excel_file(req):
 
     else:
         form = UploadFileForm()
-        return render(req, 'mainPage.html', context)
+        return render(req, 'mainPage.html', {'form': form})
 
 

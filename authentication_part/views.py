@@ -20,9 +20,9 @@ def Login(req):
             email = req.POST['email']
             password = req.POST['password']
             user = auth.authenticate(email=email, password=password)
-            req.session['user_id'] = str(user.id)
             if user is not None and user.is_active:
                 auth.login(req, user)
+                req.session['user_id'] = str(user.id)
                 return HttpResponseRedirect('/user/{}'.format(user.ticket_number))
         return render(req, 'loginPage.html', context={'form': form})
     else:
