@@ -16,6 +16,7 @@
                 <div class="login-block mt-5 center-block">
                     <h1>Введите свои данные</h1>
                     <form method = 'POST' action="{% url 'login' %}">
+
                         {% if form.errors %}
                             {% for error in form.errors %}
                                 {{ error }}

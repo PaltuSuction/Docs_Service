@@ -16,7 +16,7 @@ class UserRegistrationForm(forms.ModelForm):
         '''TODO: Разобраться с тем, почему не работает эта штука'''
         #model = settings.AUTH_USER_MODEL
         model = get_user_model()
-        fields = ('avatar', 'email', 'last_name', 'first_name', 'middle_name', 'ticket_number')
+        fields = ('avatar', 'email', 'last_name', 'first_name', 'middle_name', 'ticket_number', 'is_teacher')
 
     def clean_password2(self):
         cd = self.cleaned_data

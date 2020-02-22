@@ -1,5 +1,5 @@
 from django.contrib import auth
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -13,7 +13,17 @@ from core_part.models import Person, Student
     #template_name = 'test_loginPage.html'
     success_url = '/user/{}'.format()'''
 
-def Login(req):
+
+def startpageview(req):
+    if req.user.is_authenticated:
+        #return HttpResponseRedirect('user/{}/'.format(req.user.ticket_number))
+        return HttpResponseRedirect('me/')
+        #return render(req, 'mainPage.html', {'user': req.user})
+    else:
+        return HttpResponseRedirect('login/')
+
+
+def login(req):
     if req.method == 'POST':
         form = UserLoginForm(req.POST)
         if form.is_valid():
@@ -23,11 +33,19 @@ def Login(req):
             if user is not None and user.is_active:
                 auth.login(req, user)
                 req.session['user_id'] = str(user.id)
-                return HttpResponseRedirect('/user/{}'.format(user.ticket_number))
+                #return HttpResponseRedirect('user/{}'.format(user.ticket_number))
+                return HttpResponseRedirect('me/')
         return render(req, 'loginPage.html', context={'form': form})
     else:
         form = UserLoginForm()
         return render(req, 'loginPage.html', context={'form': form})
+
+
+
+
+class logout(LogoutView):
+    template_name = 'loginPage.html'
+    success_url = ''
 
 
 def Registration(req):
@@ -46,10 +64,3 @@ def Registration(req):
     else:
         form = UserRegistrationForm()
         return render(req, 'registerPage.html', {'form': form})
-
-
-def MainPage(req, tik_num):
-    session_id = req.session['user_id']
-    user = User.objects.get(id=session_id)
-    student = Student.objects.get(userPerson=user)
-    return render(req, 'mainPage.html', context={'student' : student})

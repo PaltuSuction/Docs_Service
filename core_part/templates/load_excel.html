@@ -1,0 +1,10 @@
+{% extends 'userpanel_basic.html' %}
+
+{% block content %}
+<h1>Форма загрузки Excel-документа.</h1>
+    <form action = '{% url "parse_excel" %}' method = 'POST' enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Загрузить...">
+    </form>
+{% endblock %}

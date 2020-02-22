@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
@@ -22,5 +23,9 @@ from Docs_Service import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('authentication_part.urls')),
+
+    #url(r'user/([0-9]{6})/parseExcel', include('core_part.urls'), name='toUserPage'),
+    url(r'me/', include('core_part.urls'), name='toUserPage'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
